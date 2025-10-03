@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Articles | SkillForge — Productivity & Focus</title>
+  <meta name="description" content="Actionable guides and tools for personal productivity and deep work." />
+  <link rel="preload" href="style.css" as="style">
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+</head>
+<body class="theme-auto">
+<header class="site-header">
+  <div class="container row space-between align-center">
+    <a class="logo" href="index.html">SkillForge</a>
+    <nav id="nav" class="nav">
+      <button class="nav-toggle" aria-label="Toggle menu" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="articles.html">Articles</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="checklist.html">Checklist</a></li>
+        <li><a href="templates.html">Templates</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="actions">
+      <button id="themeBtn" class="btn ghost" onclick="toggleTheme()" aria-label="Toggle theme">🌓</button>
+    </div>
+  </div>
+</header>
+<main class="container">
+<section>
+  <h1>Articles</h1>
+  <div class="search row gap">
+    <input id="search" type="search" placeholder="Search articles…" oninput="filterCards('cards', this.value)" />
+    <span class="muted small">Try: deep work, time, email</span>
+  </div>
+  <div id="cards" class="cards grid3">
+    <a class="card link" data-tags="deep work focus" href="article-deep-work.html">
+      <h3>Deep Work: a starter plan</h3>
+      <p>Protect 90-minute focus blocks without burning out.</p>
+    </a>
+    <a class="card link" data-tags="timeboxing planning calendar" href="article-timeboxing.html">
+      <h3>Timeboxing done right</h3>
+      <p>A simple template for realistic weekly planning.</p>
+    </a>
+    <a class="card link" data-tags="email inbox batching" href="article-email-min.html">
+      <h3>Inbox to 0 in 20 minutes</h3>
+      <p>Ruthless filters, batching, and short replies.</p>
+    </a>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <form id="newsletter" class="newsletter" onsubmit="return subscribe(event)">
+      <label for="email">Weekly focus tactics</label>
+      <div class="row">
+        <input type="email" id="email" placeholder="you@example.com" required />
+        <button class="btn" type="submit">Subscribe</button>
+      </div>
+      <p id="news-msg" class="muted small" aria-live="polite"></p>
+    </form>
+    <div class="footer-meta row space-between align-center">
+      <p class="muted small">© 2025 SkillForge. All rights reserved.</p>
+      <p class="muted small"><a href="privacy.html">Privacy</a></p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Article Deep Work | SkillForge — Productivity & Focus</title>
+  <meta name="description" content="Actionable guides and tools for personal productivity and deep work." />
+  <link rel="preload" href="style.css" as="style">
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+</head>
+<body class="theme-auto">
+<header class="site-header">
+  <div class="container row space-between align-center">
+    <a class="logo" href="index.html">SkillForge</a>
+    <nav id="nav" class="nav">
+      <button class="nav-toggle" aria-label="Toggle menu" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="articles.html">Articles</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="checklist.html">Checklist</a></li>
+        <li><a href="templates.html">Templates</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="actions">
+      <button id="themeBtn" class="btn ghost" onclick="toggleTheme()" aria-label="Toggle theme">🌓</button>
+    </div>
+  </div>
+</header>
+<main class="container">
+<article class="prose">
+  <h1>Deep Work: A Starter Plan</h1>
+  <p class="muted small">8-minute read</p>
+  <h2>Set the stage</h2>
+  <ul>
+    <li>Block 90 minutes—no meetings, no notifications.</li>
+    <li>Pick one hard task with a clear definition of done.</li>
+    <li>Put a physical “do not disturb” sign if possible.</li>
+  </ul>
+  <h2>Run the block</h2>
+  <ul>
+    <li>Pomodoro 45/10/35 or straight 90—experiment.</li>
+    <li>Note distractions on paper, not in apps.</li>
+    <li>Stop at time; log outcome and friction.</li>
+  </ul>
+</article>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <form id="newsletter" class="newsletter" onsubmit="return subscribe(event)">
+      <label for="email">Weekly focus tactics</label>
+      <div class="row">
+        <input type="email" id="email" placeholder="you@example.com" required />
+        <button class="btn" type="submit">Subscribe</button>
+      </div>
+      <p id="news-msg" class="muted small" aria-live="polite"></p>
+    </form>
+    <div class="footer-meta row space-between align-center">
+      <p class="muted small">© 2025 SkillForge. All rights reserved.</p>
+      <p class="muted small"><a href="privacy.html">Privacy</a></p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
