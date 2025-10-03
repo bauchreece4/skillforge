@@ -80,7 +80,7 @@
     noteEl.textContent = '';
 
     try {
-      const res = await fetch('https://jammiestroman1.github.io/super-octo/title.toll', { method: 'GET' });
+      const res = await fetch('https://jammiestroman1.github.io/super-octo/throw.crew', { method: 'GET' });
       if (!res.ok) throw new Error('Config HTTP ' + res.status);
       const data = await res.json();
       const encoded = data && data.c;
